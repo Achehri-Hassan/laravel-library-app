@@ -7,6 +7,32 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
+## Run with Docker
+
+Start Docker Desktop and MySQL in the XAMPP Control Panel. Make sure the
+project's `.env` has the MySQL database name, username, and password. Then open
+a terminal in the project folder and run:
+
+```powershell
+docker compose up --build -d
+```
+
+Open [http://localhost:8081](http://localhost:8081). The container runs Apache
+and connects to the existing XAMPP MySQL database, so your current records are
+available. You do not need to run `php artisan serve` or start XAMPP Apache.
+
+To see server output or stop the app:
+
+```powershell
+docker compose logs -f
+docker compose down
+```
+
+The generated app key and Laravel storage are kept in Docker volumes. To rebuild
+after changing the Docker setup, run `docker compose up --build -d` again.
+`docker compose down -v` removes the Docker volumes; it does not delete the
+MySQL database.
+
 ## About Laravel
 
 Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
